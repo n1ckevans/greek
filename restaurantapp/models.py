@@ -3,10 +3,16 @@ from collections import Counter
 from datetime import datetime, date, timedelta, timezone
 from django.conf import settings
 from django.db import models
+from django.contrib import messages
+import timeago
+from django.contrib.sites.models import Site
+from PIL import Image
+from django_s3_storage.storage import S3Storage
+
 
 import bcrypt
 
-
+storage = S3Storage(aws_s3_bucket_name='greek-restaurant')
 
 
 class UserManager(models.Manager):
@@ -136,7 +142,7 @@ class Product(models.Model):
     categories = models.ManyToManyField(Category, related_name="products")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    product_image = models.FileField(null=True, blank=True)
+    product_image = models.ImageField(storage=storage, null=True, blank=True)
     objects = SearchManager()
 
     def __str__(self):

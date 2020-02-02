@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-from .secrets import secret_key, stripe_key
+from .secrets import secret_key, stripe_key, aws_access_key_id, aws_secret_access_key
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -40,10 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django_s3_storage',
     'django_countries',
     'crispy_forms',
     'paypal.standard.ipn',
     'stripe',
+    
 ]
 
 MIDDLEWARE = [
@@ -120,11 +123,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # django-paypal settings
 # UPDATE WITH MY INFO
@@ -134,6 +139,18 @@ PAYPAL_TEST = True
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# DEFAULT_FILE_STORAGE = 'django_s3_storage.storage.S3Storage'
+
+# STATICFILES_STORAGE = 'django_s3_storage.storage.StaticS3Storage'
+
+AWS_REGION = 'us-west-1'
+
+AWS_ACCESS_KEY_ID = aws_access_key_id
+
+AWS_SECRET_ACCESS_KEY = aws_secret_access_key
+
+AWS_S3_BUCKET_NAME = 'greek-restaurant'
 
 
 STRIPE_SECRET_KEY = stripe_key
