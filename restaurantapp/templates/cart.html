@@ -1,0 +1,145 @@
+{% extends 'base.html' %} {%block content %}
+<!--Main layout-->
+<main class="mt-5 pt-4">
+  <div class="container wow fadeIn">
+    <!-- Heading -->
+    <h2 class="mt-5 mb-2 h2 text-center">Your Order</h2>
+    <h6 class="mb-4 pb-2 text-center">Minimum Order $50
+
+    <!-- /.Horizontal Steppers -->
+
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-md-8 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <table class="cart table table-hover table-borderless text-center">
+            <thead class="border-bottom">
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quanity</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in current_order.items.all %}
+              <tr>
+                <th scope="row" class="align-middle">{{ item.item.name }}</th>
+                <td class="align-middle">
+                  {% if item.item.discount_price %}
+                  <del>${{ item.item.price }}</del>
+                  ${{ item.item.discount_price }} {% else %} $
+                  {{ item.item.price }}
+                  {% endif %}
+                </td>
+                <td class="align-middle">
+                  <form
+                    action="/cart/update/{{ item.id }}"
+                    method="post"
+                    class="d-inline"
+                  >
+                    {% csrf_token %}
+                    <input
+                      type="number"
+                      name="quantity"
+                      id="quantity"
+                      value="{{ item.quantity }}"
+                      min="1"
+                      class="w-25"
+                    />
+                    <button type="submit" class="btn-primary btn border-0 p-1">
+                      Update
+                    </button>
+                  </form>
+                  <form
+                    action="/cart/delete/{{ item.id }}"
+                    method="post"
+                    class="d-inline"
+                  >
+                    {% csrf_token %}
+                    <button
+                      type="submit"
+                      class="btn-danger btn border-0 p-1 ml-1"
+                    >
+                      Remove
+                    </button>
+                  </form>
+                </td>
+                <td class="align-middle">${{ item.get_item_total }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if not current_order.items.all %}
+
+          <h4 class="text-center display-5">Your Cart is empty </h4>
+
+          {% endif %}
+        </div>
+        <div class="row">
+          <a
+            href="/items"
+            class="mt-2 border-round btn aqua-gradient color-block d-inlineblock mx-auto"
+            id="menu"
+            >View Full Menu</a
+          >
+        </div>
+
+        <!--/.Card-->
+      </div>
+      <!--Grid column-->
+
+      {% if current_order.items.all %}
+      <!--Grid column-->
+      <div class="col-md-4 mb-4">
+        <!-- Heading -->
+        <!-- Cart -->
+        <ul class="list-group mb-3 z-depth-1">
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Subtotal (USD)</span>
+            <strong>${{ current_order.order_subtotal }}</strong>
+          </li>
+          {% if current_order.total_saving %}
+          <li class="list-group-item d-flex justify-content-between">
+            <span>total savings</span>
+            <strong class="text-danger"
+              >- ${{ current_order.total_saving }}</strong
+            >
+          </li>
+          {% endif %}
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Sales Tax (0.08%)</span>
+            <strong>${{ current_order.get_tax }}</strong>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Delivery</span>
+            <strong><del>$9.99</del> Free</strong>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Order Total</span>
+            <strong>${{ current_order.final_total }}</strong>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <a class="w-100" href="/checkout"
+              ><button
+                class="btn btn-secondary btn-md waves-effect m-0 btn-block"
+                type="button"
+              >
+                Checkout
+              </button></a
+            >
+          </li>
+        </ul>
+        <!-- Cart -->
+      </div>
+      <!--Grid column-->
+      {% endif %}
+    </div>
+    <!--Grid row-->
+  </div>
+</main>
+<!--Main layout-->
+{% endblock %}

@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Nick's Greek Café</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Josefin Sans">
+  <link href="{% static 'images/favicon.ico' %}" rel="icon" />
+  <link href="{% static 'css/index.css' %}" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/5df482d9c3.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <!-- messages -->
+  <div class="message">
+    {% if messages %}{% for message in messages %}
+    <div class="alert alert-dismissible hide
+        text-{{ message.tags }} alert-{{ message.tags }}" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Nav Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand text-brand" href="/"><span class="blue">Nick's Greek Café</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active blue">
+            <a class="nav-link" href="/home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/items">Order</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/catering">Catering</a>
+          </li>
+          {% if current_order.items.all %}
+          <li class="nav-item">
+            <a class="nav-link" href="/cart">
+              <span class="badge badge-secondary badge-pill">
+                {{ current_order.items.all.count }}</span>
+
+              <i class="fas fa-shopping-cart"></i>
+              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+            </a>
+          </li>
+          {% endif %} {% if not request.session.uid or user.user_level == 0 %}
+          <li class="nav-item">
+            <a href="/signin" class="nav-link">
+              <i class="fas fa-sign-in-alt"></i> Sign in
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href="/signout" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i> Sign out
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <a href="/products">
+    <div>
+      <video class="video-intro" autoplay loop muted>
+        <source src="{% static 'video/chicken.mp4' %}" type="video/mp4" />
+      </video>
+
+      <div class="carousel-caption">
+        <h1 class="mb-4">
+          <strong class="d-inline">Welcome to Nick's Greek Café</strong>
+        </h1>
+        <h2 class="mb-4">
+          Serving authentic Greek cuisine made from only the finest
+          ingredients
+        </h2>
+      </div>
+    </div>
+  </a>
+</body>
+
+</html>

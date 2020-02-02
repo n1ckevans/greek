@@ -1,0 +1,51 @@
+<section class="text-center mb-4">
+  <!--Grid row-->
+  <div class="row wow fadeIn">
+    {% for product in products_in_category %}
+    <!--Grid column-->
+    <div class="col-lg-3 col-md-6 mb-4">
+      <!--Card-->
+      <div class="card">
+     
+        <!--Card image-->
+        <div class="view overlay">
+          <img
+            src="{{ product.product_image.url }}"
+            class="card-img-top"
+            alt="aadd"
+            height="250"
+          />
+          <a href="/items/show/{{ product.id }}">
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!--Card image-->
+
+        <!--Card content-->
+        <div class="card-body text-center">
+          <!--Category & Title-->
+          <!-- <a href="/items/show/{{ product.id }}" class="grey-text">
+            <h5>{{product.categories.all.0}}</h5>
+          </a> -->
+
+          <a href="/items/show/{{ product.id }}">
+            <h4 class="font-weight-bold blue-text">
+              {% if product.discount_price %}
+              <del class="h5">${{ product.price }}</del>
+              <strong class="text-danger">
+                ${{ product.discount_price }}</strong
+              >
+              {% else %} <strong>${{ product.price }}</strong>
+              {% endif %}
+            </h4>
+          </a>
+        </div>
+        <!--Card content-->
+      </div>
+      <!--Card-->
+    </div>
+    <!--Grid column-->
+    {% endfor %}
+  </div>
+  <!--Grid row-->
+</section>

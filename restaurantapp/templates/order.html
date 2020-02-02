@@ -1,0 +1,181 @@
+{% extends 'base.html' %} {% load static %} {%block content %}
+<main class="mt-5 pt-4">
+  <div class="container wow fadeIn">
+    <!-- Heading -->
+    <h2 class="mt-4 mb-0 h2 text-center">Order #{{order.id}}</h2>
+    <div class="row">
+      <div class="col-md-12">
+ 
+     
+      </div>
+    </div>
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-md-8 mb-4">
+        <!--Card-->
+
+        <div class="card">
+          <div class="card-header">
+            Ordered:
+            <strong>{{ order.updated_at }}</strong>
+            <span class="float-right">
+              <strong>Status:</strong>
+              <span class="text-success">Delviered</span></span
+            >
+          </div>
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-sm-6">
+            
+              </div>
+
+              <div class="col-sm-12">
+                <h6 class="mb-2">Customer:  <strong>{{ order.user.first_name }}
+                  {{ order.user.last_name }}</strong></h6>
+                  <h6 class="mb-2">Email: {{ order.user.email }}</h6>
+                  <h6 class="mb-2">Deliver To: </h6>
+            
+                <div><strong>{{ address.street }}</strong></div>
+                {%if address.street2 %}
+              
+                  <div><strong>{{ address.street2 }}</strong></div>
+                        
+                {% endif %}
+               
+                <div><strong>{{ address.state }}, {{ address.zipcode }}</strong></div>
+                <div></div>
+              </div>
+            </div>
+
+            <div class="table-responsive-sm">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <tr>
+                    
+                      <th>Quantity</th>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th class="right">Price</th>
+                      <th class="right">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  {% for orderitem in order.items.all %}
+                  <tr>
+                   
+                    <td class="left strong">{{ orderitem.quantity }}</td>
+                    <td class="left">{{ orderitem.item.name }}</td>
+                    <td class="left">{{ orderitem.item.description }}</td>
+
+                    <td class="right">
+                      {%if orderitem.item.discount_price %}
+                      <span class="text-danger">
+                        ${{ orderitem.item.discount_price }}
+                      </span>
+                      {%else%}
+                      {{ orderitem.item.price }}
+                      {% endif %}
+                    </td>
+                    <td class="center">{{ orderitem.quantity }}</td>
+                    <td class="right">{{ orderitem.get_item_total }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!--/.Card-->
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-4 mb-4">
+        <!-- Heading -->
+
+        <!-- Cart -->
+        <ul class="list-group mb-3 z-depth-1">
+          <li
+            class="py-2 list-group-item d-flex justify-content-between"
+            style="border: 0;"
+          >
+            <span>Subtotal</span>
+            <strong>${{ order.order_subtotal }}</strong>
+          </li>
+          {% if order.total_saving %}
+          <li
+            class="py-2 list-group-item d-flex justify-content-between"
+            style="border: 0;"
+          >
+            <span>Total Savings</span>
+            <strong class="text-danger">- ${{ order.total_saving }}</strong>
+          </li>
+          {% endif %} {% if order.promo_valid %}
+          <li
+            class="py-2 list-group-item d-flex justify-content-between"
+            style="border: 0;"
+          >
+            <span>Discount ({{ promo_percent }}%)</span>
+            <strong class="text-danger">-${{ promo_saving }}</strong>
+          </li>
+          {% endif %}
+          <li
+            class="py-2 list-group-item d-flex justify-content-between"
+            style="border: 0;"
+          >
+            <span>Sales Tax</span>
+            <strong>${{ order.get_tax }}</strong>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between py-2"
+            style="border: 0;"
+          >
+            <span>Delivery</span>
+            <strong><del>$9.99</del> Free</strong>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between lh-condensed"
+          >
+            <div>
+              <h6 class="my-0"><strong>Order Total</strong></h6>
+            </div>
+            <span class="">
+              <strong>${{ final_total }}</strong>
+            </span>
+          </li>
+        </ul>
+        <ul class="list-group mb-3 z-depth-1">
+          <li
+            class="list-group-item d-flex justify-content-between lh-condensed"
+            style="border: 0;"
+          >
+            <div>
+              <h6 class="my-0"><strong>Delivery Time</strong></h6>
+            </div>
+            <span class="text-success">
+              <strong>(30-45 minutes)</strong>
+            </span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between lh-condensed"
+          >
+            <div>
+              <h6 class="my-0"><strong>Arrival Date</strong></h6>
+            </div>
+            <span class="">
+              <strong>{{ delivery_date }}</strong>
+            </span>
+          </li>
+        </ul>
+        <!-- Cart -->
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+</main>
+
+{% endblock %}

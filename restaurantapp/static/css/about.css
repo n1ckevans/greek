@@ -1,0 +1,47 @@
+.landing{
+  width: 100%;
+  height: 50%;
+}
+
+
+
+/* Media Queries */
+@media (max-width: 1452px) {
+
+}
+
+@media (max-width: 850px) {
+
+
+}
+
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 576px) {
+
+
+}
+
+@media (max-width: 566) {
+
+
+}
+
+
+@media (max-width: 487px) {
+
+
+  .about {
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+  }
+
+#story {
+display: none;
+}
+
+
+}

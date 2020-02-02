@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% load static %} {%block content %}
+<!--Main layout-->
+<main class="mt-5 pt-4" style="height: 70vh;">
+  <div class="container">
+    <div class="row">
+      {% if not order_history %}
+      <h4 class="mt-5 pt-2">No Orders Found</h4>
+      <a
+      href="/products"
+      class="btn btn-block"
+      id = "menu"
+      >View Full Menu</a>
+      {% else %}
+      <h4 class="mt-5 pt-2">
+        Here are your past orders {{ user.first_name }}
+      </h4>
+      {%endif %}
+      <table class="cart table table-hover table-borderless text-center">
+        <thead class="border-bottom">
+          <tr>
+            <th scope="col">Order Number</th>
+            <th scope="col">Items</th>
+            <th scope="col">Date Ordered</th>
+            <th scope="col">Order Status</th>
+            <th scope="col">More Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in order_history %}
+          <tr>
+            <th scope="row" class="align-middle">
+              <a href="/account/orders/{{ order.id }}" class="blue"
+                >#{{ order.id }}</u></a>
+              
+              </th>
+            <td class="align-middle">
+              {% for item in order.items.all %}
+              {{ item.item.name }}, {% endfor %}
+            </td>
+            <td class="align-middle">
+              {{ order.updated_at }}
+            </td>
+            <td
+              class="align-middle {%if order.is_delivered %}text-success{%else%}text-danger{%endif%}"
+            >
+              {%if order.is_delivered %}Delivered{%else%}Pending{%endif%}
+            </td>
+            <td class="align-middle">
+              <a href="/account/orders/{{ order.id }}" class="blue"
+                ><u>View Details</u></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<!--Main layout-->
+{% endblock %}

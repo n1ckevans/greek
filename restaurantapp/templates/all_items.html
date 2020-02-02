@@ -1,0 +1,207 @@
+{% extends 'base.html' %} {% load static %} {%block product_style%}
+<link rel="stylesheet" href="{% static 'css/items.css' %}" />
+{% endblock %} {%block content %}
+
+
+
+
+
+
+<div class="container mt-5 pt-5 ">
+
+  
+
+
+  <div class="row">
+    <div class="col-3 ">
+      <nav class="side-bar">
+        <div class="card card-cascade wider">
+          <!-- Card image -->
+          <div class="view view-cascade overlay">
+            <img
+              class="card-img-top wave-effects mb-3 hide-sm hide-xs"
+              src="{% static 'images/santorini.jpg' %}"
+              alt="Card image cap"
+            />
+            <a href="#!">
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+
+          <!-- Card content -->
+          <div class="card-body card-body-cascade text-center pt-0">
+            <!-- Text -->
+            <form
+              action="/products/search"
+              method="post"
+              id="search_form"
+              autocomplete="off"
+            >
+              {% csrf_token %}
+              <div class="md-form mt-2 mb-2">
+                <input
+                  type="text"
+                  id="form1"
+                  class="form-control hide-xs"
+                  name="search"
+                />
+                <label class="mt-2 hide-xs" for="form1"><strong>Search</strong></label>
+              </div>
+              <div class="form-group">
+                <label class="hide-sm" for="price_range">Price Range</label>
+                <div class="row justify-content-center hide-sm hide-xs">
+                  <input
+                    class="form-control form-control-sm col-4"
+                    type="number"
+                    placeholder="Min"
+                    id="min"
+                    name="min"
+                  />
+                  <div class="col-1"><strong>-</strong></div>
+                  <input
+                    class="form-control form-control-sm col-4 ml-2"
+                    type="number"
+                    placeholder="Max"
+                    id="max"
+                    name="max"
+                  />
+                </div>
+                <div class="options form-group mt-3 box">
+               <span style="color:#0000ac;" ><strong class ="sm-txt" id="menu-title">Menu</strong></span>
+               
+                  <label>
+                    <input
+                      type="radio"
+                      name="category"
+                      checked
+                      id=""
+                      value="Lunch"
+                    />
+                    <span class="lunch sm-txt">Lunch</span> </label
+                  ><br />
+
+                  <label>
+                    <input
+                      type="radio"
+                      name="category"
+                      id=""
+                      value="Dinner"
+                    />
+                    <span class="dinner sm-txt">Dinner</span> </label
+                  ><br />
+                  <label>
+                    <input
+                      type="radio"
+                      name="category"
+                      id=""
+                      value="Drinks"
+                    />
+                    <span class="drinks sm-txt">Drinks</span> </label
+                  ><br />
+                  <label>
+                    <input
+                      type="radio"
+                      name="category"
+                      id=""
+                      value="Dessert"
+                    />
+                    <span class="dessert sm-txt">Dessert</span> </label>
+                  <br/>
+                  <!-- <label>
+                    <input type="radio" name="category" id="" value="new" />
+                    <span class="new-arrivals">new arrivals</span> </label
+                  ><br/>
+                   <label>
+                    <input type="radio" name="category" id="" value="sale" />
+                    <span class="sale-items">sale items</span>
+                  </label> -->
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- Card Wider -->
+      </nav>
+    </div>
+
+
+
+    <div class="col-9 ">
+      <div class="all_products">
+        <div class="row wow fadeIn">
+          {% for product in products %}
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <!--Card-->
+            <div class="card">
+           
+              <!--Card image-->
+              <div class="view overlay">
+                <a href="/items/show/{{ product.id }}">
+                  <img
+                  src="{{ product.product_image.url }}"
+                  class="card-img-top "
+                  alt="aadd"
+                  height="150"
+                />
+                </a>
+                
+                <a class="blue" href="/items/show/{{ product.id }}">
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+               
+                <h6>
+                  <strong>
+                    <a class="blue"
+                      href="/items/show/{{ product.id }}"
+                      class="dark-grey-text"
+                      >{{ product.name }}
+                      <!-- {% if product.is_new %}
+                      <span class="badge badge-pill danger-color">NEW</span>
+                      {% endif %} -->
+                    </a>
+                  </strong>
+                </h6>
+                <a href="/items/show/{{ product.id }}">
+                 
+                </a>
+                <p class="blue-text">
+                  {% if product.discount_price %}
+                  <del class="h6">${{ product.price }}</del
+                  ><br />
+                  <strong class="text-danger">
+                    ${{ product.discount_price }}</strong
+                  >
+                  {% else %}
+                  <del class="h6"></del><br />
+                  <strong class="blue">${{ product.price }}</strong>
+                  {% endif %}
+                </p>
+
+
+
+              </div>
+              <!--Card content-->
+            </div>
+            <!--Card-->
+          </div>
+          <!--Grid column-->
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block allproduct_js %}
+<script
+  type="text/javascript"
+  src="{% static 'js/allproducts.js' %}"
+></script>
+{% endblock %}

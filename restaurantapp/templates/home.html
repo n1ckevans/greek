@@ -1,0 +1,172 @@
+{% extends 'base.html' %} {%block content %}
+
+<!-- Image Slider -->
+<div class="container-fluid slider text-white">
+  <div id="slides" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="img-fluid landing" src="../static/images/spread.jpg" alt="Bend Oregon">
+        <div class="carousel-caption">
+          <h1 class="">Welcome to Nick's Greek Café!</h1>
+          <a href="/items" class="btn btn-block" id="small">View Full Menu</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="img-fluid landing" src="../static/images/salad.jpg" alt="Mt. Bachelor">
+        <div class="carousel-caption">
+          <h1 class="">Only the finest imported ingredients</h1>
+          <a href="/items" class="btn btn-block" id="small">View Full Menu</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img class="img-fluid landing" src="../static/images/various.jpg" alt="Mt. Bachelor">
+        <div class="carousel-caption">
+          <h1 class="" id="bask">Authentic Greek Cuisine</h1>
+          <a href="/items" class="btn btn-block" id="small">View Full Menu</a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+<!--Main layout-->
+<main id="featured">
+
+
+
+
+
+  <div class="container">
+   
+
+
+      <!--Section: Products v.3-->
+      <div class="categories">
+        <a href="/items" class="btn btn-block" id="menu">View Full Menu</a>
+
+        <section class="text-center mb-4">
+          <h1 class="mb-4">Featured Items</h1>
+
+          <!--Grid row-->
+          <div class="row wow fadeIn">
+            {% for product in products %}
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4">
+              <!--Card-->
+              <div class="card">
+
+
+                <!--Card image-->
+                <div class="view overlay">
+                  <a href="/items/show/{{ product.id }}">
+                    <img src="{{ product.product_image.url }}" class="card-img-top" alt="aadd" height="150" />
+                  </a>
+
+                  <a class="blue" href="/items/show/{{ product.id }}">
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+                <!--Card image-->
+
+                <div class="card-body text-center">
+                  <!--Category & Title-->
+
+                  <h6>
+                    <strong>
+                      <a class="blue" href="/items/show/{{ product.id }}" class="dark-grey-text">{{ product.name }}
+                        <!-- {% if product.is_new %}
+                      <span class="badge badge-pill danger-color">NEW</span>
+                      {% endif %} -->
+                      </a>
+                    </strong>
+                  </h6>
+                  <a href="/items/show/{{ product.id }}">
+
+                  </a>
+                  <p class="blue-text">
+                    {% if product.discount_price %}
+                    <del class="h6">${{ product.price }}</del><br />
+                    <strong class="text-danger">
+                      ${{ product.discount_price }}</strong>
+                    {% else %}
+                    <del class="h6"></del><br />
+                    <strong>${{ product.price }}</strong>
+                    {% endif %}
+                  </p>
+
+
+
+                </div>
+                <!--Card content-->
+              </div>
+              <!--Card-->
+            </div>
+            <!--Grid column-->
+            {% endfor %}
+          </div>
+          <!--Grid row-->
+
+        </section>
+      </div>
+
+      <!--Section: Products v.3-->
+
+      <!--Pagination-->
+      <nav class="d-flex justify-content-center wow fadeIn">
+        {% include 'pagination.html' %}
+      </nav>
+      <!--Pagination-->
+  </div>
+</main>
+<!--Main layout-->
+
+<!--Footer-->
+<footer id="home-foot" class="text-center">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-md-6">
+        <a href="">
+          <i class="fab fa-facebook-f mr-3 "></i>
+        </a>
+
+        <a href="">
+          <i class="fab fa-twitter mr-3"></i>
+        </a>
+
+        <a href="">
+          <i class="fab fa-instagram mr-3"></i>
+        </a>
+
+        <a href="">
+          <i class="fab fa-yelp mr-3"></i>
+        </a>
+
+        <a href="">
+          <i class="far fa-envelope mr-3"></i>
+        </a>
+
+      </div>
+      <div class="col-md-6">
+
+        <div class="footer-copyright py-3">
+          <p class="mr-4 d-inline-block blue">© Nick's Greek Café</p>
+          <a class="d-inline-block blue" href="/">
+            Contact us
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</footer>
+{% endblock %}

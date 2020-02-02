@@ -1,0 +1,45 @@
+{% extends 'base.html' %} {% load static %} {%block logincss %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}" />
+{%endblock %} {%block content %}
+
+<div class="view wrapper fadeInDown" >
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+     
+      <h4 class="mt-4 " style="color: #0000ac;"><b>Welcome Back</b></h4>
+    </div>
+
+    <!-- Login Form -->
+    <form action="/login_post" method="POST">
+      {% csrf_token %}
+      <input
+        type="email"
+        id="login"
+        class="fadeIn second"
+        name="email"
+        placeholder="Email"
+        required
+        autofocus
+      />
+      <input
+        type="password"
+        id="password"
+        class="fadeIn third"
+        name="password"
+        placeholder="Password"
+      />
+      <input type="submit" class="fadeIn fourth" value="Log In" style="background-color: #0000ac;" />
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      Dont have an account?
+      <a class="underlineHover" href="/signup">Register</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

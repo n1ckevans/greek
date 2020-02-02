@@ -1,0 +1,191 @@
+html,
+body,
+.view,
+.carousel {
+  height: 100%;
+  width: 100%;
+  font-family: "Josefin Sans", sans-serif;
+  color: #222222;
+}
+
+.message {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 20%;
+  z-index: 2;
+  top: 65px;
+}
+*/ .navbar {
+  padding: 0.8rem;
+}
+
+.text-brand {
+  color: #0000ac;
+  font-size: 300%;
+  font-weight: 600;
+}
+
+.blue {
+  color: #0000ac;
+}
+
+.navbar-collapse {
+  color: #0000ac;
+}
+
+.navbar-nav li {
+  padding-right: 20px;
+}
+
+.video-intro {
+  height: 100%;
+  width: 100%;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-80%);
+}
+
+.carousel-caption h1 {
+  font-size: 450%;
+  font-weight: 500;
+  text-shadow: 2px 2px 10px black;
+  margin-top: 5rem;
+}
+
+.carousel-caption h2 {
+  font-size: 400%;
+  font-weight: 420;
+  text-shadow: 2px 2px 10px black;
+  margin-top: 5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+nav {
+  opacity: 0.8;
+}
+
+#video {
+  height: 100%;
+  width: 100%;
+}
+
+#slides {
+  margin-bottom: -40px;
+}
+
+/* Media Queries */
+@media (max-width: 1452px) {
+
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-90%);
+    
+  }
+  
+  .carousel-caption h1 {
+    font-size: 500%;
+    font-weight: 800;
+    text-shadow: 2px 2px 10px black;
+    margin-top: 1.5rem;
+  }
+  
+    .carousel-caption h2 {
+      display: none;
+  }
+
+  #video{
+    height:100%;
+    width: 100%;
+  }
+
+  .video-intro {
+    height: 100%;
+    width: 100%;
+  }
+
+  .text-brand {
+    color: #0000ac;
+    font-size: 200%;
+    font-weight: 600;
+  }
+
+
+}
+
+@media (max-width: 768px) {
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-90%);
+  }
+
+  .carousel-caption h1 {
+    font-size: 250%;
+    font-weight: 800;
+    text-shadow: 2px 2px 10px black;
+    margin-top: 3rem;
+  }
+
+  .carousel-caption h2 {
+    display: none;
+  }
+
+  #video {
+    height: 100%;
+    width: 100%;
+  }
+
+  .video-intro {
+    height: 100%;
+    width: 100%;
+  }
+
+  .text-brand {
+    color: #0000ac;
+    font-size: 120%;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-90%);
+  }
+
+  .carousel-caption h1 {
+    font-size: 160%;
+    font-weight: 800;
+    text-shadow: 2px 2px 10px black;
+    margin-top: 1.5rem;
+  }
+
+  .carousel-caption h2 {
+    display: none;
+  }
+
+  #video {
+    height: 100%;
+    width: 100%;
+  }
+
+  .video-intro {
+    height: 100%;
+    width: 100%;
+  }
+
+  .text-brand {
+    color: #0000ac;
+    font-size: 120%;
+    font-weight: 600;
+  }
+}

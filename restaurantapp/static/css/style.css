@@ -1,0 +1,643 @@
+      html, body, .view, .carousel {
+        height: 100%;
+        width: 100%;
+        font-family: 'Josefin Sans', sans-serif;
+        color: #222222;
+        
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      nav {
+        
+        opacity: 0.8;
+
+      }
+
+      
+      #slides {
+        margin-bottom: -40px;
+      }
+
+      .navbar {
+        padding: .8rem;
+      
+      }
+
+ 
+
+   
+      .video-intro {
+        height: 100%;
+        width: 100%;
+      }
+      
+      .navbar-nav li {
+        padding-right: 20px;
+      }
+      
+      .nav-link {
+        font-size: 1.1em !important:
+      }
+      
+      
+      
+      .carousel-caption {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-80%);
+        
+      }
+      
+      .carousel-caption h1 {
+        font-size: 450%;
+        font-weight: 500;
+        text-shadow: 2px 2px 10px black;
+        margin-top: 5rem;
+      }
+      
+        .carousel-caption h2 {
+          font-size: 400%;
+          font-weight: 420;
+          text-shadow: 2px 2px 10px black;
+          margin-top: 5rem;
+      }
+      
+      #meet {
+        padding-top: 1.3rem;
+        margin-bottom: -0.1rem;
+        color: black;
+      }
+      
+
+      .carousel-item {
+        width: 100%;
+        height: 400px;
+        
+      }
+
+     
+
+
+    
+      
+      .logo {
+        max-width: 200px;
+        max-height: 100px;
+      }
+      
+      .parallax-1 {
+        /* The image used */
+        background-image: url('../img/for-sale.jpg');
+      
+        /* Set a specific height */
+        height: 600px;
+      
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .parallax-2 {
+        /* The image used */
+        background-image: url('../img/Three_sisters.jpg');
+      
+        /* Set a specific height */
+        height: 600px;
+      
+        /* Create the parallax scrolling effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 2rem;
+      }
+      
+      
+      .building {
+        max-width: 90%;
+        max-height: 90%;
+        border: 5px solid #0000ac; 
+        margin-top: 1rem;
+      }
+
+      .plate {
+        max-width: 90%;
+        max-height: 90%;
+        border: 5px solid #0000ac; 
+        margin-top: 1rem;
+      }
+      
+      
+      
+      .blue {
+        color:#0000ac; 
+        text-decoration: none;
+        
+      }
+      
+      .about {
+        font-size: 145%;
+        font-weight: 140;
+        padding-bottom: 0.5rem;
+        margin: 1rem;
+        margin-bottom: 2rem;
+        color: #0000ac; 
+      }
+      
+      .social a {
+        font-size: 3em;
+        padding: 1rem;
+      }
+      
+      .fa-facebook {
+        color: #3b5998;
+      }
+      
+      .lead {
+        text-align: center;
+        vertical-align: middle;
+      
+      }
+      
+      .fa-twitter {
+        color: #00aced;
+      }
+      
+      .fa-google-plus-g {
+        color: #dd4b39;
+      }
+      
+      .fa-instagram {
+        color: #517fa4;
+      }
+      
+      .fa-youtube {
+        color: #bb0000;
+      }
+      
+      /* Hover */
+      .fa-facebook:hover {
+        color: #3971e9;
+      }
+      
+      .fa-twitter:hover {
+        color: #05bcff;
+      }
+      
+      .fa-google-plus-g:hover {
+        color: #ff391f;
+      }
+      
+      .fa-instagram:hover {
+        color: #5ca2db;
+      }
+      
+      .fa-youtube:hover {
+        color: #fc0202;
+      }
+      
+      footer {
+        padding-top: 1.5rem;
+        background-color: rgb(164, 181, 190);
+      
+      }
+      
+      footer h2 {
+        font-size: 2em;
+        padding: 1rem;
+      }
+      
+      footer img {
+        max-width:  30%;
+        max-height: 30%;
+      
+       
+      }
+      
+      #slide {
+        margin-bottom: 1rem;
+      }
+      
+      footer hr {
+        background-color: white;
+        max-width:  70%;
+      
+      }
+      
+      footer h4 {
+        padding: 0.65rem;
+      }
+      
+      footer h5 {
+        padding: 0.25rem;
+      }
+      
+      #principal {
+        padding: 0.5rem;
+      }
+      
+      .padding {
+        /* font-size: 2em; */
+        padding: 2rem;
+      }
+      
+      #sale {
+        max-width: 1200px;
+        max-height: 1200px;
+      }
+      
+      #fixed {
+        position: fixed;
+        top: 150px;
+      }
+      
+      .shadow {
+        text-shadow: 1px 1px 15px #000000;
+      }
+      
+      .shadow-w {
+        text-shadow: 2px 2px #ffffff;
+      }
+      
+     
+      
+      #carousel-home{
+        margin-top: 8rem;
+        background-color: grey;
+      }
+
+      .text-brand {
+        color: #0000ac;
+        font-size: 300%;
+        font-weight: 600;
+      }
+      
+      .navbar-collapse{
+        color: #0000ac;
+      }
+      
+      .landing {
+        min-width: 100%;
+        min-height: 100%
+      }
+      
+      #small{
+        display: none;
+       
+      }
+
+      #menu{
+        background-color: #0000ac;
+        color: white;
+        width: 150px;
+        padding: 10px;
+        margin: auto;
+        margin-bottom: 1rem;
+       
+      }
+
+    
+    .slider {
+      margin-bottom: 2rem;
+    }
+    
+    .carousel-caption p {
+   
+      font-size: 650%;
+      font-weight: 800;
+      text-shadow: 2px 2px 10px black;
+      margin-top: 5rem;
+      margin-bottom: 1rem;
+    }
+    
+    }
+    
+
+      
+/* Media Queries */
+ @media (max-width: 1452px) {
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-90%);
+    
+  }
+  
+  .carousel-caption h1 {
+    font-size: 380%;
+    font-weight: 800;
+    text-shadow: 2px 2px 10px black;
+    margin-top: 5rem;
+  }
+  
+    .carousel-caption h2 {
+      display: none;
+  }
+  
+  .text-brand {
+    color: #0000ac;
+    font-size: 250%;
+    font-weight: 600;
+  }
+
+  .landing {
+    width: 100%;
+    height: 100%
+  }
+
+  #small{
+    display: none;
+   
+  }
+#menu{
+  background-color: #0000ac;
+  color: white;
+  width: 150px;
+  padding: 10px;
+  margin: auto;
+  margin-bottom: 1rem;
+ 
+}
+.slider {
+  margin-bottom: -2rem;
+}
+
+.carousel-caption p {
+   
+  font-size: 500%;
+  font-weight: 800;
+  text-shadow: 2px 2px 10px black;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+}
+
+}
+
+
+
+@media (max-width: 850px) {
+.slider {
+  margin-bottom: -22rem;
+}
+
+.carousel-caption p {
+   
+  font-size: 500%;
+  font-weight: 800;
+  text-shadow: 2px 2px 10px black;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+}
+.building {
+  margin-bottom: 1rem;
+  margin-top: 30rem;
+
+}
+
+.plate {
+  margin-bottom: 1rem;
+  margin-top: 35rem;
+
+}
+
+.story {
+  margin-bottom: -50rem;
+}
+
+.about {
+  font-size: 105%;
+  font-weight: 300;
+  margin-bottom: -0.25rem;
+}
+
+
+}
+
+@media (max-width: 799px) {
+  #featured, #home-foot {
+    display: none;
+  }
+
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-90%);
+  }
+
+  .carousel-caption h1 {
+    font-size: 300%;
+    font-weight: 800;
+    text-shadow: 2px 2px 10px black;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .carousel-caption h2 {
+    display: none;
+  }
+
+  .carousel-caption p {
+   
+    font-size: 300%;
+    font-weight: 800;
+    text-shadow: 2px 2px 10px black;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .text-brand {
+    color: #0000ac;
+    font-size: 160%;
+    font-weight: 600;
+  }
+
+  .landing {
+    width: 100%;
+    height: 100%
+  }
+
+  
+  #small{
+    background-color: #0000ac;
+    color: white;
+    width: 150px;
+    padding: 10px;
+    margin: auto;
+   display: inline-block;
+  }
+
+
+  .building {
+    margin-bottom: 1rem;
+    margin-top: 30rem;
+  
+  }
+
+  .plate {
+    margin-bottom: 1rem;
+    margin-top: 35rem;
+  
+  }
+  
+  
+  .story {
+    margin-bottom: -35rem;
+  }
+  
+  .about {
+    font-size: 105%;
+    font-weight: 300;
+    margin-bottom: -0.25rem;
+  }
+
+
+}
+
+
+@media (max-width: 740px) {
+  .building {
+    margin-bottom: 1rem;
+    margin-top: 10.5rem;
+  
+  }
+
+  .plate {
+    margin-bottom: 1rem;
+    margin-top: 18rem;
+  
+  }
+  
+  .story {
+    margin-bottom: -35rem;
+  }
+  
+  .about {
+    font-size: 105%;
+    font-weight: 300;
+    margin-bottom: -0.25rem;
+  }
+}
+
+
+@media (max-width: 576px) {
+  #featured, #home-foot {
+    display: none;
+  }
+  
+  .carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-95%);
+  }
+
+  .carousel-caption h1 {
+    font-size: 180%;
+    font-weight: 800;
+    text-shadow: 2px 2px 10px black;
+    margin-top: 7rem;
+    margin-bottom: 1rem;
+  }
+
+  .carousel-caption p {
+   
+    font-size: 180%;
+    font-weight: 800;
+    text-shadow: 2px 2px 10px black;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .text-brand {
+    color: #0000ac;
+    font-size: 120%;
+    font-weight: 600;
+  }
+
+  .landing {
+    width: 100%;
+    height: 60%;
+  }
+
+  #small{
+    background-color: #0000ac;
+    color: white;
+    width: 150px;
+    padding: 10px;
+    margin: auto;
+   
+  }
+
+.building {
+  margin-bottom: 1rem;
+  margin-top: 6.5rem;
+
+}
+
+.plate {
+  margin-bottom: 1rem;
+  margin-top: 16rem;
+
+}
+
+.story {
+  margin-bottom: -35rem;
+}
+
+.about {
+  font-size: 95%;
+  font-weight: 300;
+  margin-bottom: -0.25rem;
+}
+
+}
+
+
+@media (max-width: 446px) {
+  .plate {
+    margin-bottom: 1rem;
+    margin-top: 10rem;
+  
+  }
+}
+
+
+@media (max-width: 410px) {
+.building {
+  margin-bottom: 1rem;
+  margin-top: 2.5rem;
+
+}
+
+
+.plate {
+  margin-bottom: 1rem;
+  margin-top: 8.5rem;
+
+}
+}
+
+@media (max-width: 360px) {
+  .building {
+    margin-bottom: 1rem;
+  }
+
+  .plate {
+    margin-bottom: 1rem;
+    margin-top: 7rem;
+  }
+  
+  .story {
+    margin-bottom: -35rem;
+  }
+  
+  .about {
+    font-size: 95%;
+    font-weight: 300;
+    margin-bottom: -0.25rem;
+  }
+
+ 
+
+  }

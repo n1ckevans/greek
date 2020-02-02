@@ -1,0 +1,53 @@
+<!-- Navbar -->
+{% load static %}
+ <!-- Nav Bar -->
+ <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container-fluid">
+    <a id="dan-header" class="navbar-brand text-brand" href="/"><span class="blue">Nick's Greek Café</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/items">Order</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/catering">Catering</a>
+        </li>
+        {% if current_order.items.all %}
+            <li class="nav-item">
+              <a class="nav-link waves-effect" href="/cart">
+                <span class="badge badge-secondary badge-pill">
+                  {{ current_order.items.all.count }}</span
+                >
+
+                <i class="fas fa-shopping-cart"></i>
+                <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+              </a>
+            </li>
+            {% endif %} 
+            {% if not request.session.uid or user.user_level == 0 %}
+            <li class="nav-item">
+              <a href="/signin" class="nav-link waves-effect">
+                <i class="fas fa-sign-in-alt"></i> Sign in
+              </a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="/signout" class="nav-link waves-effect">
+                <i class="fas fa-sign-out-alt"></i> Sign out
+              </a>
+            </li>
+            {% endif %}
+      </ul>
+      
+    </div>
+  </div>  
+  </nav>

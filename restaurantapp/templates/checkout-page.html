@@ -1,0 +1,240 @@
+{% extends 'base.html' %} {% load static %} {%block content %}
+<!--Main layout-->
+<main class="mt-5 pt-4">
+  <div class="container wow fadeIn">
+    <!-- Heading -->
+    <h2 class="mt-4 mb-0 h2 text-center">Order Confirmation</h2>
+    <div class="row">
+      <div class="col-md-12">
+
+
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-md-8 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+          <form
+            class="card-body"
+            action="/checkout/shipping_info"
+            method="post"
+          >
+            {% csrf_token %}
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-md-6 mb-2">
+                <!--firstName-->
+                <div class="md-form ">
+                  <input
+                    type="text"
+                    id="first_name"
+                    class="form-control"
+                    name="first_name"
+                    value="{{ user.first_name }}"
+                  />
+                  <label for="firstName" class="">First Name</label>
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-md-6 mb-2">
+                <!--lastName-->
+                <div class="md-form">
+                  <input
+                    type="text"
+                    id="last_name"
+                    class="form-control"
+                    name="last_name"
+                    value="{{ user.last_name }}"
+                  />
+                  <label for="lastName" class="">Last Name</label>
+                </div>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+
+            <!--email-->
+            <div class="md-form mb-5">
+              <input
+                type="text"
+                id="email"
+                class="form-control"
+                placeholder="youremail@example.com"
+                name="email"
+                value="{{ user.email }}"
+              />
+              <label for="email" class="">Email</label>
+            </div>
+
+            <!--address-->
+            <div class="md-form mb-5">
+              <input
+                type="text"
+                id="address"
+                class="form-control"
+                placeholder="123 Fake St. Long Beach, CA"
+                name="address1"
+              />
+              <label for="address" class="">Delivery Address</label>
+            </div>
+
+            <!--address-2-->
+            <div class="md-form mb-5">
+              <input
+                type="text"
+                id="address2"
+                name="address2"
+                class="form-control"
+                placeholder="Apt"
+              />
+              <label for="address-2" class="">Address 2 (Optional)</label>
+            </div>
+
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-12 mb-4">
+                <label for="country">Country</label>
+                <select
+                  class="custom-select d-block w-100"
+                  id="country"
+                  name="country"
+                  required
+                >
+                  
+                  <option value="US">United States</option>
+                  <option value="CANADA">Canada</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <label for="state">State</label>
+                <input
+                  type="text"
+                  class="custom-select d-block w-100"
+                  id="state"
+                  name="state"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+              <!--Grid column-->
+
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-6 mb-4">
+                <label for="zip">Zip</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="zip"
+                  name="zipcode"
+                  placeholder=""
+                  required
+                />
+                <div class="invalid-feedback">
+                  Zip code required.
+                </div>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+
+            <hr />
+
+            <div class="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="same-address"
+              />
+              <label class="custom-control-label" for="same-address"
+                >Shipping Address is the same as Billing Address</label
+              >
+            </div>
+            <div class="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                class="custom-control-input"
+                id="save-info"
+              />
+              <label class="custom-control-label" for="save-info"
+                >Save my information</label
+              >
+            </div>
+
+            <hr class="mb-4" />
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+              Proceed to Payment
+            </button>
+          </form>
+        </div>
+        <!--/.Card-->
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-4 mb-4">
+        <!-- Heading -->
+
+        <!-- Cart -->
+        <ul class="list-group mb-3 z-depth-1 promo_code_here">
+          <li
+            class="list-group-item d-flex justify-content-between lh-condensed"
+          >
+            <div>
+              <h6 class="my-0">Total price</h6>
+            </div>
+            <span class="">${{ current_order.final_total }}</span>
+          </li>
+        </ul>
+        <!-- Cart -->
+
+        <!-- Promo code -->
+        <form
+          class="card p-2"
+          id="promo_form"
+          action="/check_promo"
+          method="post"
+        >
+          {% csrf_token %}
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Promo code"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              name="promocode"
+            />
+            <div class="input-group-append">
+              <button
+                class="promo_button btn btn-secondary btn-md waves-effect m-0"
+                type="submit"
+              >
+                Redeem
+              </button>
+            </div>
+          </div>
+        </form>
+        <!-- Promo code -->
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+</main>
+<!--Main layout-->
+{% endblock %} {% block promojs %}
+<script src="{% static 'js/promo.js' %}"></script>
+{% endblock %}

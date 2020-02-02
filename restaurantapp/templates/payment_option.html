@@ -1,0 +1,114 @@
+{% extends 'base.html' %} {% load static %}  {%block content %}
+<!--Main layout-->
+<main class="mt-5 pt-4 ">
+  <div class="container wow fadeIn">
+    <!-- Heading -->
+    <h2 class="mt-4 mb-0 h2 text-center">Payment Method</h2>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Stepers Wrapper -->
+
+        <!-- /.Stepers Wrapper -->
+      </div>
+    </div>
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-md-8 mb-4">
+        <!--Card-->
+        <div class="card">
+          <!--Card content-->
+
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item w-50 text-center">
+              <a
+                class="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                href="#home"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+                >Credit Card</a
+              >
+            </li>
+            <li class="nav-item w-50 text-center">
+              <a
+                class="nav-link"
+                id="profile-tab"
+                data-toggle="tab"
+                href="#profile"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+                >PayPal</a
+              >
+            </li>
+          </ul>
+          <div class="row">
+            <div class="tab-content" id="myTabContent">
+              <div
+                class="tab-pane fade show active"
+                id="home"
+                role="tabpanel"
+                aria-labelledby="home-tab"
+              >
+                <div class="d-block">
+                  <form action="/charge" method="post" class="mx-auto">
+                    {% csrf_token %}
+                    <script
+                      src="https://checkout.stripe.com/checkout.js"
+                      class="stripe-button"
+                      data-key="{{ key }}"
+                      data-description="A Django Charge"
+                      data-amount="{{ total }}00"
+                      data-locale="auto"
+                    ></script>
+                  </form>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="profile"
+                role="tabpanel"
+                aria-labelledby="profile-tab"
+              >
+                <div class="d-block paypal">
+                  {{ form.render }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.Card-->
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-4 mb-4">
+        <!-- Heading -->
+
+        <!-- Cart -->
+        <ul class="list-group mb-3 z-depth-1 promo_code_here">
+          <li
+            class="list-group-item d-flex justify-content-between lh-condensed"
+          >
+            <div>
+              <h6 class="my-0"><strong>Total price</strong></h6>
+            </div>
+            <span class="">
+              <strong>${{ total }}</strong>
+            </span>
+          </li>
+        </ul>
+        <!-- Cart -->
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+</main>
+<!--Main layout-->
+{% endblock %} {% block stripejs %}
+<script src="{% static 'js/stripe.js' %}"></script>
+{% endblock %}
