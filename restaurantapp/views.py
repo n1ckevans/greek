@@ -144,11 +144,11 @@ def signout(request):
 
 
 def all_items(request):
-    current_order = Order.objects.filter(user=User.objects.get(
-        id=request.session['uid']), ordered=False)[0]
+    #current_order = Order.objects.filter(user=User.objects.get(
+        #id=request.session['uid']), ordered=False)[0]
     context = {
         'products': Product.objects.all(),
-        'current_order': current_order,
+        #'current_order': current_order,
         'user': User.objects.get(id=request.session['uid'])
     }
     return render(request, "all_items.html", context)

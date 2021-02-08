@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-from .secrets import secret_key, stripe_key, aws_access_key_id, aws_secret_access_key
+from .secrets import secret_key, stripe_key, aws_access_key_id, aws_secret_access_key, database_string
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -84,10 +84,7 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+     'default': database_string
 }
 
 
